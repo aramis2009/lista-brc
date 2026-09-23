@@ -437,6 +437,15 @@
   }
   details.prop .prop-body p{ margin:0; }
 
+  .prop-note{
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--line);
+    padding-left: 14px;
+    margin: 14px 2px 0;
+  }
+
   /* ---------- Equipo ---------- */
   .team{ background: var(--cream); }
   .team-grid{
