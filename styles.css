@@ -16,6 +16,7 @@
 
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
+  html, body{ overflow-x: hidden; max-width: 100%; }
   body{
     margin:0;
     background: var(--cream);
@@ -67,12 +68,15 @@
     align-items:center;
     gap:10px;
     text-decoration:none;
+    min-width:0;
+    flex: 1 1 auto;
   }
-  .brand img{ width: 40px; height: auto; }
+  .brand img{ width: 40px; height: auto; flex-shrink:0; }
   .brand-text{
     display:flex;
     flex-direction:column;
     line-height:1.15;
+    min-width:0;
   }
   .brand-text strong{
     font-family:'Fraunces', serif;
@@ -83,6 +87,9 @@
   .brand-text span{
     color: var(--gold-light);
     font-size:0.72rem;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
   nav.desktop-nav{ display:none; }
   nav.desktop-nav ul{
@@ -108,8 +115,9 @@
     background:none;
     border: 1.5px solid rgba(255,255,255,0.35);
     border-radius: 8px;
-    width: 42px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
+    flex-shrink:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -178,7 +186,7 @@
     position:relative;
     background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
     overflow:hidden;
-    padding: 56px 0 60px;
+    padding: 44px 0 46px;
     text-align:center;
   }
   .hero-crest-bg{
@@ -226,11 +234,12 @@
   }
   .hero-ctas{
     display:flex;
-    gap: 14px;
+    gap: 12px;
     justify-content:center;
-    margin-top: 30px;
+    margin-top: 28px;
     flex-wrap:wrap;
   }
+  .hero-ctas .btn{ flex: 1 1 auto; text-align:center; }
   .btn{
     display:inline-block;
     padding: 13px 26px;
@@ -282,7 +291,7 @@
   }
 
   /* ---------- Section headers ---------- */
-  .section-pad{ padding: 62px 0; }
+  .section-pad{ padding: 46px 0; }
   .section-head{
     max-width: 60ch;
     margin-bottom: 34px;
@@ -580,11 +589,41 @@
     margin: 18px 0 0;
   }
 
+  /* ---------- Vote banner ---------- */
+  .vote-banner{
+    background: var(--red);
+    text-align:center;
+    padding: 28px 22px;
+  }
+  .vote-banner .vote-line{
+    font-family:'Fraunces', serif;
+    color:#fff;
+    font-size: clamp(1.5rem, 8vw, 2.1rem);
+    font-weight:700;
+    letter-spacing: 0.01em;
+    margin:0;
+  }
+  .vote-banner .vote-line .letter{
+    display:inline-block;
+    background: var(--navy-deep);
+    color: var(--gold-light);
+    padding: 2px 14px;
+    border-radius: 8px;
+    margin-left: 6px;
+  }
+  .vote-banner p{
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    margin: 8px 0 0;
+  }
+
   /* ---------- Desktop ---------- */
   @media (min-width: 860px){
     .menu-btn{ display:none; }
     nav.desktop-nav{ display:block; }
     #mobile-nav{ display:none; }
+
+    .section-pad{ padding: 72px 0; }
 
     .hero{ padding: 90px 0 96px; text-align:left; }
     .hero-inner{
@@ -599,6 +638,7 @@
     .hero h1{ margin:0; max-width: 11ch; }
     .hero p.sub{ margin: 20px 0 0; }
     .hero-ctas{ justify-content:flex-start; }
+    .hero-ctas .btn{ flex: 0 0 auto; }
     .hero-crest-bg{ display:none; }
     .hero-crest{
       width: 100%;
@@ -631,4 +671,10 @@
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     #mobile-nav{ transition:none; }
+  }
+
+  @media (max-width: 360px){
+    .wrap{ padding: 0 16px; }
+    .header-row{ padding: 10px 16px; }
+    .hero h1{ font-size: clamp(1.85rem, 8vw, 2.4rem); }
   }
