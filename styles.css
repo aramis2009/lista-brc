@@ -564,6 +564,13 @@
   .footer-row img{ width:34px; }
   .footer-row strong{ color:#fff; font-family:'Fraunces', serif; }
 
+  .credit{
+    text-align:center;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.72rem;
+    margin: 18px 0 0;
+  }
+
   /* ---------- Desktop ---------- */
   @media (min-width: 860px){
     .menu-btn{ display:none; }
