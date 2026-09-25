@@ -439,6 +439,103 @@
     transition: opacity .15s ease;
   }
   details.prop[open] summary .plus::after{ opacity:0; }
+
+  .prop-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+    flex: 1 1 auto;
+  }
+  .prop-num{
+    flex-shrink:0;
+    font-family:'Inter', sans-serif;
+    font-size:0.72rem;
+    font-weight:600;
+    color: var(--ink-soft);
+    background: var(--cream-2);
+    border-radius: 5px;
+    padding: 2px 6px;
+  }
+  .prop-bars{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding: 0 4px;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+  .bar{
+    display:inline-block;
+    width:6px;
+    height:20px;
+    border-radius:3px;
+  }
+  .bar-verde{ background:#2E7D46; }
+  .bar-amarillo{ background:#E0A526; }
+  .bar-rojo{ background: var(--red); }
+  .bar-azul{ background:#2B5DAA; }
+  .bar-cafe{ background:#111111; }
+  .prop-title-text{
+    min-width:0;
+  }
+  .prop-right{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .prop-check{
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+  }
+  .prop-check input[type="checkbox"]{
+    width:19px;
+    height:19px;
+    accent-color: var(--navy);
+    cursor:pointer;
+  }
+  details.prop.done{
+    background: var(--cream-2);
+    opacity:0.75;
+  }
+  details.prop.done .prop-title-text{
+    text-decoration: line-through;
+    color: var(--ink-soft);
+  }
+
+  .legend{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 26px;
+    font-size:0.82rem;
+    color: var(--ink-soft);
+  }
+  .legend-group{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 12px;
+  }
+  .legend-title{
+    font-weight:600;
+    color: var(--navy-deep);
+    margin-right:2px;
+  }
+  .legend-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .legend-item .bar{ height:14px; }
+
   details.prop .prop-body{
     padding: 0 18px 18px;
     color: var(--ink-soft);
