@@ -625,12 +625,6 @@
     padding: 12px 8px;
     min-width: 0;
   }
-  .team-card.lead{
-    background: var(--navy);
-    border-color: var(--navy);
-  }
-  .team-card.lead .t-name, .team-card.lead .t-role{ color:#fff; }
-  .team-card.lead .t-role{ color: var(--gold-light); }
   .avatar{
     width: 36px; height:36px;
     border-radius:50%;
@@ -644,11 +638,6 @@
     background: var(--navy);
     flex-shrink:0;
     border: 2px solid var(--gold);
-  }
-  .team-card.lead .avatar{
-    background: var(--gold);
-    color: var(--navy-deep);
-    border-color: #fff;
   }
   .t-name{
     font-family:'Fraunces', serif;
