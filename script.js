@@ -10,6 +10,16 @@ const openBtn = document.getElementById('openNav');
   closeBtn.addEventListener('click', () => setNav(false));
   mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
 
+  // Solo un área de propuestas abierta a la vez; al abrir, se lleva al inicio del área
+  const groups = document.querySelectorAll('details.prop-group');
+  groups.forEach(group => {
+    group.addEventListener('toggle', () => {
+      if (!group.open) return;
+      groups.forEach(other => { if (other !== group) other.open = false; });
+      group.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
+  });
+
   // Only one accordion item open per group at a time
   document.querySelectorAll('.prop-group').forEach(group => {
     const items = group.querySelectorAll('details.prop');
