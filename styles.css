@@ -39,7 +39,7 @@
     margin: 0 auto;
     padding: 0 22px;
   }
-  section{ scroll-margin-top: 76px; }
+  section, .prop-group{ scroll-margin-top: 76px; }
 
   /* ---------- Skip link / focus ---------- */
   a:focus-visible, button:focus-visible, summary:focus-visible{
@@ -83,6 +83,7 @@
     color:#fff;
     font-size:1.02rem;
     font-weight:600;
+
   }
   .brand-text span{
     color: var(--gold-light);
@@ -112,27 +113,29 @@
     border-color: var(--gold);
   }
   .menu-btn{
-    background:none;
-    border: 1.5px solid rgba(255,255,255,0.35);
-    border-radius: 8px;
-    width: 44px;
-    height: 44px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
     flex-shrink:0;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
+    gap: 5px;
     cursor:pointer;
+    transition: background .2s ease;
   }
-  .menu-btn span, .menu-btn::before, .menu-btn::after{
-    content:"";
+  .menu-btn:hover{ background: rgba(255,255,255,0.16); }
+  .menu-btn span{
     display:block;
-    width: 18px;
+    width: 20px;
     height: 2px;
+    border-radius: 2px;
     background: #fff;
-    position:relative;
   }
-  .menu-btn{ flex-direction:column; gap:4px; }
-  .menu-btn span{ margin:0; }
+  .menu-btn span:nth-child(2){ width: 14px; align-self: center; }
 
   #mobile-nav{
     position: fixed;
@@ -234,12 +237,17 @@
   }
   .hero-ctas{
     display:flex;
-    gap: 12px;
+    gap: 10px;
     justify-content:center;
     margin-top: 28px;
     flex-wrap:wrap;
   }
-  .hero-ctas .btn{ flex: 1 1 auto; text-align:center; }
+  .hero-ctas .btn{
+    flex: 0 0 auto;
+    text-align:center;
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
   .btn{
     display:inline-block;
     padding: 13px 26px;
@@ -331,49 +339,49 @@
     padding-left: 18px;
     margin: 22px 0;
   }
-  .values{
-    list-style:none;
-    margin: 24px 0 0;
-    padding:0;
-    display:grid;
-    gap: 14px;
-  }
-  .values li{
-    display:flex;
-    gap: 14px;
-    align-items:flex-start;
-    background:#fff;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
-  .values .v-icon{
-    width: 30px; height:30px;
-    flex-shrink:0;
-    color: var(--navy);
-  }
-  .values h4{
-    margin:0 0 3px;
-    font-family:'Fraunces', serif;
-    font-size: 1.02rem;
+  .about-team{ scroll-margin-top: 76px; }
+  .about-team h3{
+    font-size: 1.25rem;
     color: var(--navy-deep);
+    margin: 0 0 4px;
   }
-  .values p{
-    margin:0;
-    font-size:0.92rem;
+  .about-team > p{
+    margin: 0 0 16px;
+    font-size: 0.92rem;
     color: var(--ink-soft);
   }
 
   /* ---------- Propuestas ---------- */
   .propuestas{ background: var(--cream-2); }
-  .prop-group{ margin-bottom: 36px; }
+  .prop-group{
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
   .prop-group:last-child{ margin-bottom:0; }
   .prop-group-head{
     display:flex;
     align-items:center;
     gap: 12px;
-    margin-bottom: 14px;
+    padding: 14px 16px;
+    cursor:pointer;
+    list-style:none;
   }
+  .prop-group-head::-webkit-details-marker{ display:none; }
+  .prop-group[open] > .prop-group-head{ border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .prop-group > details.prop{ margin-left: 12px; margin-right: 12px; }
+  .prop-group > details.prop:last-child{ margin-bottom: 12px; }
+  .group-chevron{
+    margin-left:auto;
+    flex-shrink:0;
+    width:10px; height:10px;
+    border-right: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+    transform: rotate(45deg);
+    transition: transform .2s ease;
+  }
+  .prop-group[open] .group-chevron{ transform: rotate(-135deg); }
   .prop-icon{
     width: 42px; height:42px;
     flex-shrink:0;
@@ -553,20 +561,24 @@
   }
 
   /* ---------- Equipo ---------- */
-  .team{ background: var(--cream); }
   .team-grid{
     display:grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 10px;
   }
   .team-card{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    gap: 14px;
-    background:#fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-card);
-    padding: 16px;
+    justify-content:center;
+    gap: 6px;
+    text-align:center;
+    background: rgba(11,31,92,0.045);
+    border: 1px solid rgba(11,31,92,0.08);
+    border-radius: 12px;
+    padding: 12px 8px;
+    min-width: 0;
   }
   .team-card.lead{
     background: var(--navy);
@@ -575,14 +587,14 @@
   .team-card.lead .t-name, .team-card.lead .t-role{ color:#fff; }
   .team-card.lead .t-role{ color: var(--gold-light); }
   .avatar{
-    width: 52px; height:52px;
+    width: 36px; height:36px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size: 1.05rem;
+    font-size: 0.82rem;
     color:#fff;
     background: var(--navy);
     flex-shrink:0;
@@ -595,12 +607,14 @@
   }
   .t-name{
     font-family:'Fraunces', serif;
-    font-size: 1.02rem;
+    font-size: 1rem;
+    line-height: 1.25;
     color: var(--navy-deep);
     margin:0;
   }
   .t-role{
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.3;
     color: var(--ink-soft);
     margin: 2px 0 0;
   }
@@ -617,7 +631,7 @@
     margin: 0 auto;
   }
   .suggest-icon{
-    width: 52px; height:52px;
+    width: 36px; height:36px;
     border-radius:50%;
     background: var(--navy);
     color: var(--gold-light);
@@ -735,7 +749,6 @@
     .hero h1{ margin:0; max-width: 11ch; }
     .hero p.sub{ margin: 20px 0 0; }
     .hero-ctas{ justify-content:flex-start; }
-    .hero-ctas .btn{ flex: 0 0 auto; }
     .hero-crest-bg{ display:none; }
     .hero-crest{
       width: 100%;
@@ -748,21 +761,12 @@
     .stat .num{ font-size: 2.3rem; }
 
     .about-grid{
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 40px;
       align-items:start;
     }
 
-    .team-grid{
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .team-card.lead{ grid-column: span 2; }
-
     .prop-group-head h3{ font-size:1.3rem; }
-  }
-
-  @media (min-width: 1080px){
-    .team-grid{ grid-template-columns: repeat(3, 1fr); }
-    .team-card.lead{ grid-column: span 3; }
   }
 
   @media (prefers-reduced-motion: reduce){
