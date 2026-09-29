@@ -72,3 +72,27 @@ const openBtn = document.getElementById('openNav');
       saveDone(Array.from(doneIds));
     });
   });
+
+  // Popup de bienvenida: se muestra unos segundos una vez por visita
+  const splash = document.getElementById('splash');
+  const SPLASH_KEY = 'ceal-lista-e-splash-visto';
+  let yaVisto = false;
+  try { yaVisto = sessionStorage.getItem(SPLASH_KEY) === '1'; } catch (e) {}
+
+  if (splash && !yaVisto){
+    let splashTimer;
+    const closeSplash = () => {
+      clearTimeout(splashTimer);
+      splash.classList.add('closing');
+      setTimeout(() => { splash.hidden = true; }, 300);
+      document.removeEventListener('keydown', onSplashKey);
+    };
+    const onSplashKey = e => { if (e.key === 'Escape') closeSplash(); };
+
+    splash.hidden = false;
+    try { sessionStorage.setItem(SPLASH_KEY, '1'); } catch (e) {}
+    splashTimer = setTimeout(closeSplash, 6000);
+    document.getElementById('splashClose').addEventListener('click', closeSplash);
+    splash.addEventListener('click', e => { if (e.target === splash) closeSplash(); });
+    document.addEventListener('keydown', onSplashKey);
+  }

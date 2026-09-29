@@ -790,6 +790,81 @@
     margin: 8px 0 0;
   }
 
+  /* ---------- Popup de bienvenida ---------- */
+  .splash{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 16px;
+    background: rgba(7,22,64,0.72);
+    backdrop-filter: blur(4px);
+    animation: splash-in .3s ease;
+  }
+  .splash[hidden]{ display:none; }
+  .splash.closing{ opacity:0; transition: opacity .3s ease; }
+  .splash-card{
+    position:relative;
+    width: 100%;
+    max-width: 360px;
+    background: var(--navy);
+    border: 1px solid rgba(201,162,39,0.5);
+    border-radius: 18px;
+    padding: 30px 24px 22px;
+    text-align:center;
+    color:#fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    overflow:hidden;
+  }
+  .splash-close{
+    position:absolute;
+    top: 8px; right: 10px;
+    background:none;
+    border:none;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.6rem;
+    line-height:1;
+    cursor:pointer;
+    padding: 4px 8px;
+  }
+  .splash-close:hover{ color:#fff; }
+  .splash-crest{
+    width: 64px;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  }
+  .splash-vote{
+    font-family:'Fraunces', serif;
+    font-size: 1.9rem;
+    font-weight:700;
+    margin: 0;
+  }
+  .splash-vote span{ color: #FF4D5E; }
+  .splash-text{
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    margin: 10px 0 20px;
+  }
+  .splash .btn-ig{ display:inline-flex; align-items:center; gap:8px; }
+  .splash-timer{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+  }
+  .splash-timer span{
+    display:block;
+    height:100%;
+    width:100%;
+    background: var(--gold);
+    transform-origin: left;
+    animation: splash-timer 6s linear forwards;
+  }
+  @keyframes splash-in{ from{ opacity:0; } to{ opacity:1; } }
+  @keyframes splash-timer{ from{ transform: scaleX(1); } to{ transform: scaleX(0); } }
+
   /* ---------- Desktop ---------- */
   @media (min-width: 860px){
     .menu-btn{ display:none; }
